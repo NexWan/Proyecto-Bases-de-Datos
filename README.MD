@@ -1,11 +1,3 @@
-<style>
-    h1{
-        color: white;
-    }
-    *{
-        font-family: "Comic Sans MS";
-    }
-</style>
 <h1> Proyecto bases de datos</h1>
 
 <p>
