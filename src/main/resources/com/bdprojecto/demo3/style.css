@@ -1,0 +1,7 @@
+#label{
+    -fx-background-color: black;
+    -fx-border-radius: 30;
+    -fx-background-radius: 30px;
+    -fx-alignment: center;
+    -fx-text-fill: white;
+}
