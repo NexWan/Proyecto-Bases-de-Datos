@@ -16,11 +16,22 @@ public class applicationController {
     @FXML
     private TitledPane pane1;
 
+    public void setButton1(boolean val){
+        button1.setDisable(val);
+    }
+
+    public Button getButton1(){
+        return button1;
+    }
+
     @FXML
-    protected void onClick() throws IOException {
+    protected void onClick() throws Exception {
 //        This function loads a new window or stage, i plan on adding all the input options in this one
         Stage s = new Stage();
         System.out.println("hola");
-        new secondApp().start(s);
+        secondApp data = new secondApp();
+        data.start(s);
+        Stage stage = (Stage) button1.getScene().getWindow();
+        stage.close();
     }
 }

@@ -1,10 +1,14 @@
 package com.bdprojecto.demo3;
 
 import javafx.application.Application;
+import javafx.application.Platform;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
+import javax.swing.*;
 
 import java.io.IOException;
 
@@ -21,5 +25,19 @@ public class secondApp extends Application {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+//        Handling the close event so it opens again the main container app
+        primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
+            @Override
+            public void handle(WindowEvent windowEvent) {
+//                Closing message
+                JOptionPane.showMessageDialog(null,"Closing");
+                Stage s = new Stage();
+                try {
+                    new application().start(s);
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
 }
