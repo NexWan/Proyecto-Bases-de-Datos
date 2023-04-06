@@ -2,17 +2,19 @@ package com.bdprojecto.demo3;
 
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.stage.Stage;
 
 import javax.swing.*;
+import java.io.IOException;
 import java.sql.*;
 
-public class LoginController {
+public class LoginController extends manageTeacher{
 
     public TextField user;
     public TextField pass;
     public Button log;
 
-    public void login() throws ClassNotFoundException, SQLException {
+    public void login() throws ClassNotFoundException, SQLException, IOException {
         String userS = user.getText();
         String passS = pass.getText();
         System.out.println(userS + " " + passS);
@@ -27,6 +29,9 @@ public class LoginController {
             int id = rs.getInt("NUMTRABAJADOR");
             System.out.println(id+ " " + rol);
             JOptionPane.showMessageDialog(null,String.format("Hola %s ! %nsu numero de trabajador es: %d y ha sido logeado como: %s",userS,id,rol));
+            Stage s = new Stage();
+            new mainGuiApp().start(s);
+            static_label.setText(String.format("Bienvenido! %s",userS));
         }else{
             JOptionPane.showMessageDialog(null,"Usuario o contrase;a incorrecta");
         }

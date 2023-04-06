@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="526.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.manageTeacher">
+   <children>
+      <Label fx:id="label" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="729.0" text="Bienvenido! ">
+         <font>
+            <Font name="JetBrains Mono Bold Italic" size="27.0" />
+         </font>
+      </Label>
+      <Button fx:id="button1" layoutX="29.0" layoutY="154.0" mnemonicParsing="false" onAction="#writeData" prefHeight="52.0" prefWidth="130.0" text="Modificar calificaciones" userData="inactive" />
+      <Button layoutX="39.0" layoutY="256.0" mnemonicParsing="false" onAction="#showData" prefHeight="52.0" prefWidth="110.0" text="Ver calificaciones" userData="inactive" />
+      <TitledPane fx:id="pane1" collapsible="false" layoutX="297.0" layoutY="89.0" prefHeight="437.0" prefWidth="474.0" text="Calificaciones ">
+         <content>
+            <TableView fx:id="tab" prefHeight="200.0" prefWidth="200.0">
+              <columns>
+                <TableColumn fx:id="Materia" prefWidth="181.0" text="Materia" />
+                <TableColumn fx:id="calificacion" prefWidth="119.0" text="Calificacion" />
+                  <TableColumn fx:id="nomAlumno" prefWidth="171.0" text="Nombre alumno" />
+              </columns>
+            </TableView>
+         </content></TitledPane>
+   </children>
+</Pane>
