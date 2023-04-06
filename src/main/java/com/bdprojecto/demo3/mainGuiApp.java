@@ -7,10 +7,10 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
-public class application extends Application {
+public class mainGuiApp extends Application {
     @Override
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(application.class.getResource("hello-view.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(mainGuiApp.class.getResource("AppFxml.fxml"));
         String css = this.getClass().getResource("style.css").toExternalForm(); //Reference to the directory
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");
@@ -20,9 +20,5 @@ public class application extends Application {
         stage.setResizable(false);
         scene.getStylesheets().add(css); //Css reference to the javafx scene
         stage.show();
-    }
-
-    public static void main(String[] args) {
-        launch();
     }
 }

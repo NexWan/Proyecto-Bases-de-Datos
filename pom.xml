@@ -60,7 +60,7 @@
                         <!-- Default configuration for running with: mvn clean javafx:run -->
                         <id>default-cli</id>
                         <configuration>
-                            <mainClass>com.bdprojecto.demo3/com.bdprojecto.demo3.application</mainClass>
+                            <mainClass>com.bdprojecto.demo3/com.bdprojecto.demo3.third</mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>
                             <jlinkImageName>app</jlinkImageName>
