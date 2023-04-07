@@ -8,3 +8,17 @@ Un empleado puede vender muchos componentes, y un componente sólo puede ser ven
  De los proveedores de los componentes, interesa conocer el nombre de la empresa, teléfono, dirección y correo electrónico.
  Un proveedor puede proporcionar diferentes componentes en fechas diferentes, y un componente puede ser proporcionado por varios proveedores.
  Cada componente puede tener un número de serie, el cual debe ser único y no repetirse en la base de datos.
+
+ "Se desea informatizar la gestión de un restaurante de pizza que ofrece servicio a domicilio y en su local. Los clientes pueden realizar pedidos de pizzas, bebidas y postres. El restaurante cuenta con un menú de pizzas, que incluye su nombre, descripción, ingredientes, precio y tamaño. Además, se requiere almacenar información de los clientes, como su nombre, dirección, correo electrónico y número de teléfono.
+ El restaurante tiene un equipo de cocineros que se encargan de preparar las pizzas, y se desea guardar información sobre ellos, como su nombre, dirección, correo electrónico, número de teléfono y horario de trabajo. El restaurante cuenta con un equipo de repartidores que se encargan de entregar los pedidos a domicilio, y se desea guardar información sobre ellos, como su nombre, dirección, correo electrónico, número de teléfono y horario de trabajo.
+ Se requiere almacenar información de los pedidos realizados por los clientes, incluyendo la fecha y hora del pedido, la pizza solicitada, las bebidas y postres solicitados, el cliente que realizó el pedido y si el pedido fue para servicio a domicilio o en el local. Cada pedido puede tener múltiples pizzas, bebidas y postres. Se desea almacenar información de los pagos realizados por los clientes, incluyendo el monto total del pedido y la forma de pago utilizada (efectivo, tarjeta de crédito, etc.).
+ El restaurante también necesita llevar un registro de los proveedores de los ingredientes utilizados en la elaboración de las pizzas y otros productos, incluyendo el nombre, dirección, correo electrónico y número de teléfono del proveedor. Se desea guardar información de los ingredientes utilizados en la elaboración de las pizzas, incluyendo su nombre, descripción y proveedor."
+ En este caso, se requerirían al menos seis tablas para el modelo entidad-relación del restaurante de pizza: Pizzas, Clientes, Cocineros, Repartidores, Pedidos y Proveedores.
+
+ A partir del siguiente enunciado se desea realizar el modelo entidad-relación para la gestión de una escuela.
+ La escuela tiene varios profesores que imparten distintas materias a los alumnos.
+ Los profesores tienen un nombre, apellido, correo electrónico y una asignatura que imparten.
+ Los alumnos tienen un nombre, apellido, correo electrónico y una lista de asignaturas en las que están matriculados.
+ Cada asignatura tiene un nombre y una descripción. Los profesores pueden dar clases a muchos alumnos y los alumnos pueden tener varios profesores.
+ Además, cada asignatura es impartida por un solo profesor, pero un profesor puede impartir varias asignaturas.
+ Por último, se desea saber en qué aulas se imparten las clases. Las aulas tienen un nombre y una capacidad máxima de estudiantes.
