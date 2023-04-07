@@ -1,6 +1,7 @@
 package com.bdprojecto.demo3;
 
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
@@ -21,14 +22,24 @@ public class LoginController extends manageTeacher{
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","usuarios","usuarios");
         Statement st = con.createStatement();
-        String query = String.format("SELECT usuario,password,rol,numTrabajador FROM login WHERE upper(usuario) LIKE upper('%s') AND password='%s'",userS,passS);
+        String query = String.format("SELECT usuario,contrasena,rol FROM escuela.usuario WHERE upper(usuario) LIKE upper('%s') AND contrasena='%s'",userS,passS);
         System.out.println(query);
         ResultSet rs = st.executeQuery(query);
         if(rs.next()){
             String rol = rs.getString("ROL");
-            int id = rs.getInt("NUMTRABAJADOR");
-            System.out.println(id+ " " + rol);
-            JOptionPane.showMessageDialog(null,String.format("Hola %s ! %nsu numero de trabajador es: %d y ha sido logeado como: %s",userS,id,rol));
+            switch(rol){
+                case "Alumno"->{
+                    System.out.println("a");
+                }
+                case "profesor"->{
+                    System.out.println("c");
+                }
+                case "Administrador"->{
+                    System.out.println("b");
+                }
+            }
+            System.out.println(rol);
+            JOptionPane.showMessageDialog(null,String.format("Hola %s ! %nha sido logeado como: %s",userS,rol));
             Stage s = new Stage();
             new mainGuiApp().start(s);
             static_label.setText(String.format("Bienvenido! %s",userS));
