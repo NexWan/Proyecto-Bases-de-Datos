@@ -14,6 +14,8 @@ que maneje a los usuarios, cada usuario tendra que tener un nombre de usuario, c
 Cada usuario que se cree debe ser verificado si su numero de registro/matricula coincide con una matricula en la base de datos de la escuela, y por ende que esta
 no este en uso.
 
+# SCRIPT SQL PARA MANEJAR LA BD DE LA ESCUELA
+
 ```sql
 CREATE TABLE Profesores (
                             MatriculaP NUMERIC(5) NOT NULL,
@@ -63,4 +65,23 @@ CREATE TABLE Calificaciones (
 ```
 
 ![image](school.png)
+
+# SCRIPT SQL PARA MANEJAR LOS DATOS DE LOGIN/SIGN UP
+### Cabe recalcar que en esta bd se van a hacer querys desde esta bd/usuario hacia la de escuela, habran 3 roles *admin*, *profesor* y *alumno*.
+- ### Alumno
+  El rol alumno solamente podra hacer login
+- ### Maestro
+  El rol maestro podra registrar alumnos cuya matricula este dada de alta en el sistema
+- ### Admin
+  El rol admin podra registrar maestros y profesores, tambien puede dar de alta las matriculas de estos y de otros administradores
+
+```SQL
+CREATE TABLE users (
+  idusers NUMERIC(5)   NOT NULL ,
+  usuario VARCHAR(12)    ,
+  clave VARCHAR(20)    ,
+  rol VARCHAR(20)      ,
+PRIMARY KEY(idusers));
+```
+
 
