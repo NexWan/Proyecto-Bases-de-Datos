@@ -47,6 +47,7 @@ CREATE TABLE Materias (
                           MatriculaP NUMERIC(5) NOT NULL,
                           nombre VARCHAR(20),
                           descripcion VARCHAR(30),
+                          numAula NUMERIC(2) NOT NULL,
                           PRIMARY KEY(idMateria, MatriculaAl, MatriculaP),
                           FOREIGN KEY(MatriculaAl) REFERENCES Alumnos(MatriculaAl),
                           FOREIGN KEY(MatriculaP) REFERENCES Profesores(MatriculaP),
