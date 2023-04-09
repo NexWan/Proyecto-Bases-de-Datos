@@ -7,6 +7,8 @@ Esta aplicacion es creada con:
 <ul>
 <li>JavaFX</li>
 <li>Oracle</li>
+<li>Oracle SQL developer</li>
+<li>JDBCL</li>
 </ul>
 
 Agregare mas informacion conforme actualizo este programa.
