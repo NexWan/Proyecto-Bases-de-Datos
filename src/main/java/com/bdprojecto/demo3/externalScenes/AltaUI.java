@@ -6,11 +6,6 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class AltaUI extends Application {
-
-    public static void main(String[] args) {
-        launch(args);
-    }
-
     @Override
     public void start(Stage primaryStage) throws Exception{
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/com/bdprojecto/demo3/Alta.fxml"));

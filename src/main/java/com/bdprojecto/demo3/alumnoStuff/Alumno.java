@@ -4,11 +4,17 @@ public class Alumno {
     private String nomAlumno;
     private double calificacion;
     private String Materia;
+    private String matricula;
 
     public Alumno(String nomAlumno, double calificacion, String materia) {
         this.nomAlumno = nomAlumno;
         this.calificacion = calificacion;
         Materia = materia;
+    }
+
+    public Alumno(String nomAlumno, String matricula){
+        this.nomAlumno = nomAlumno;
+        this.matricula = matricula;
     }
 
     public String getNomAlumno() {
@@ -34,4 +40,14 @@ public class Alumno {
     public void setMateria(String materia) {
         Materia = materia;
     }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
 }
+
+

@@ -1,14 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="com.bdprojecto.demo3.externalScenes.AltaController"
-            prefHeight="400.0" prefWidth="600.0">
-
-</AnchorPane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="482.0" prefWidth="842.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.externalScenes.AltaController">
+   <children>
+      <TitledPane animated="false" layoutX="30.0" layoutY="97.0" prefHeight="268.0" prefWidth="351.0" text="Alumnos disponibles" >
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="243.0" prefWidth="351.0" fx:id="tabAlumno">
+                    <columns>
+                      <TableColumn prefWidth="243.0" text="Nombre" fx:id="nombreAlumno"/>
+                      <TableColumn prefWidth="105.0" text="Matricula" fx:id="matriculaAlumno"/>
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+      <TitledPane animated="false" layoutX="450.0" layoutY="97.0" prefHeight="268.0" prefWidth="359.0" text="Profesores disponibles">
+        <content>
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TableView prefHeight="243.0" prefWidth="359.0" fx:id="tabProf">
+                    <columns>
+                      <TableColumn prefWidth="258.0" text="Nombre" fx:id="nombreProf"/>
+                      <TableColumn minWidth="0.0" prefWidth="100.0" text="Matricula" fx:id="matriculaProfe"/>
+                    </columns>
+                  </TableView>
+               </children></AnchorPane>
+        </content>
+      </TitledPane>
+      <Label alignment="CENTER" contentDisplay="CENTER" layoutY="6.0" prefHeight="39.0" prefWidth="842.0" text="SELECCIONA UN USUARIO PARA CREAR">
+         <font>
+            <Font size="23.0" />
+         </font></Label>
+      <Button layoutX="392.0" layoutY="414.0" mnemonicParsing="false" text="Agregar" onAction="#darAlta"/>
+   </children>
+</Pane>
