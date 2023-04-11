@@ -1,17 +1,15 @@
-package com.bdprojecto.demo3;
+package com.bdprojecto.demo3.teacherStuff;
 
 import javafx.application.Application;
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.awt.*;
 import java.io.IOException;
 
-public class mainGuiApp extends Application {
+public class TeacherUi extends Application {
     public void start(Stage stage) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(mainGuiApp.class.getResource("Teacher.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(TeacherUi.class.getResource("Teacher.fxml"));
         String css = this.getClass().getResource("style.css").toExternalForm(); //Reference to the directory
         Scene scene = new Scene(fxmlLoader.load(), 320, 240);
         stage.setTitle("Hello!");

@@ -1,4 +1,4 @@
-package com.bdprojecto.demo3;
+package com.bdprojecto.demo3.alumnoStuff;
 
 public class Alumno {
     private String nomAlumno;

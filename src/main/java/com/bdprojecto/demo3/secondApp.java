@@ -1,5 +1,6 @@
 package com.bdprojecto.demo3;
 
+import com.bdprojecto.demo3.teacherStuff.TeacherUi;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -32,7 +33,7 @@ public class secondApp extends Application {
                 JOptionPane.showMessageDialog(null,"Closing");
                 Stage s = new Stage();
                 try {
-                    new mainGuiApp().start(s);
+                    new TeacherUi().start(s);
                 } catch (IOException e) {
                     throw new RuntimeException(e);
                 }

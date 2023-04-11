@@ -1,5 +1,6 @@
-package com.bdprojecto.demo3;
+package com.bdprojecto.demo3.teacherStuff;
 
+import com.bdprojecto.demo3.alumnoStuff.Alumno;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -8,7 +9,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import javax.swing.*;
 import java.net.URL;
 import java.sql.*;
 import java.util.ResourceBundle;

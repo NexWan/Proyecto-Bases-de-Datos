@@ -85,4 +85,31 @@ CREATE TABLE users (
 PRIMARY KEY(idusers));
 ```
 
+### Insercion de un usuario para ser administrador
+```SQL
+INSERT INTO users VALUES(1,'LeoWan','leomtz1308','Admin');
+```
+### Permisos para acceder a la tabla Escuela desde users
+```SQL
+-- Esto se hace desde la tabla escuela
+GRANT select ON Profesores TO usuarios;
+GRANT select ON alumnos TO usuarios;
+/* Estos permisos son para que la tabla usuers sepa que SI existe ese usuario basado en una matricula*/
+/*Esto solo aplica en el caso de que el rol sea alumno o maestro*/
+-- Cabe mencionar que para que se puedan otorgar se ocupa dar permisos a la tabla escuela
+/*Desde el usuario sysdba*/
+GRANT ALL PRIVILEGES TO escuela WITH ADMIN OPTION;
+```
+Es importante tener en cuenta que basicamente <b>NO</b> se manipulala la base de datos desde el programa por lo que no es relevante tener que crear usuarios especiales
+en la base de datos, el programa en java se encargara de esto mediante los comandos que se puedne ejecutar, esto me ahorra tiempo y no tengo que crear un esquema tan sotisficado con permisos.
+
+## INSERCION DE DATOS
+Estoy haciendo uso de mi programa [Generador de datos](https://github.com/NexWan/Generador-de-datos) para poder hacer insercion de datos para tablas como la de alumnos y profesores.
+Algunos datos como los de aula, calificaciones y materia las estoy agregando independientemente.
+
+<b>Como voy a utilizar un metodo para verificar que un usuario ya existe tendre que dar permisos a la tabla de escuela de acceder a los datos de la tabla de usuarios</b>
+```SQL
+-- Desde el usuario sys o sysdba
+GRANT select ON usuarios.users TO escuela;
+```
 

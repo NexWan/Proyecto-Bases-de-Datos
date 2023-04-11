@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<Pane prefHeight="526.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.manageTeacher">
+<Pane prefHeight="526.0" prefWidth="771.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.teacherStuff.manageTeacher">
    <children>
       <Label fx:id="label" layoutX="14.0" layoutY="14.0" prefHeight="27.0" prefWidth="729.0" text="Bienvenido! ">
          <font>
