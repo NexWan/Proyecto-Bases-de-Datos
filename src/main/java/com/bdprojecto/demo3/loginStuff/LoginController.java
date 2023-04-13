@@ -1,6 +1,7 @@
 package com.bdprojecto.demo3.loginStuff;
 
 import com.bdprojecto.demo3.adminStuff.AdminUi;
+import com.bdprojecto.demo3.teacherStuff.TeacherUi;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -11,6 +12,7 @@ import java.io.IOException;
 import java.sql.*;
 
 import static com.bdprojecto.demo3.adminStuff.AdminController.static_welcome;
+import static com.bdprojecto.demo3.teacherStuff.manageTeacher.*;
 
 public class LoginController{
 
@@ -32,14 +34,17 @@ public class LoginController{
         if(rs.next()){
             FXMLLoader loader;
             String rol = rs.getString("ROL");
-            switch(rol){
-                case "Alumno"->{
+            switch(rol.toLowerCase()){
+                case "alumno"->{
                     System.out.println("a");
                 }
-                case "profesor"->{
+                case "profesor","profe"->{
                     System.out.println("c");
+                    new TeacherUi().start(s);
+                    static_label.setText("Welcome! "+userS );
+                    static_matricula.setText(rs.getString("IDUSERS"));
                 }
-                case "Admin"->{
+                case "admin"->{
                     new AdminUi().start(s);
                     static_welcome.setText(String.format("Welcome! %s",userS));
                 }

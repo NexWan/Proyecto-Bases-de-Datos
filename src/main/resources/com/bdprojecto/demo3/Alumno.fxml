@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+
+<Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.alumnoStuff.AlumnoController">
+   <children>
+      <TitledPane layoutX="263.0" layoutY="80.0" prefHeight="318.0" prefWidth="336.0" text="Calificaciones" fx:id="panelCal" visible="false">
+         <content>
+            <TableView prefHeight="200.0" prefWidth="200.0" fx:id="tableCal">
+              <columns>
+                <TableColumn prefWidth="129.0" text="Materia" fx:id="materia"/>
+                <TableColumn prefWidth="116.0" text="Calificacion" fx:id="calificacion"/>
+                  <TableColumn prefWidth="89.0" text="Profesor" fx:id="profesor"/>
+              </columns>
+            </TableView>
+         </content>
+      </TitledPane>
+      <Button layoutX="20.0" layoutY="146.0" mnemonicParsing="false" text="Inscribirse a materias" onAction="#InscribirMat"/>
+      <Button layoutX="30.0" layoutY="188.0" mnemonicParsing="false" text="Ver calificaciones" onAction="#VerCal"/>
+      <Label layoutX="30.0" layoutY="26.0" text="Bienvenido!">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

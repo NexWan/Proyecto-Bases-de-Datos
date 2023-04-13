@@ -11,7 +11,7 @@
             <Font name="JetBrains Mono Bold Italic" size="27.0" />
          </font>
       </Label>
-      <Button fx:id="button1" layoutX="29.0" layoutY="154.0" mnemonicParsing="false" onAction="#writeData" prefHeight="52.0" prefWidth="130.0" text="Modificar calificaciones" userData="inactive" />
+      <Button fx:id="button1" layoutX="29.0" layoutY="154.0" mnemonicParsing="false" onAction="#writeData" prefHeight="52.0" prefWidth="167.0" text="Modificar calificaciones" userData="inactive" />
       <Button layoutX="39.0" layoutY="256.0" mnemonicParsing="false" onAction="#showData" prefHeight="52.0" prefWidth="110.0" text="Ver calificaciones" userData="inactive" />
       <TitledPane fx:id="pane1" collapsible="false" layoutX="297.0" layoutY="89.0" prefHeight="437.0" prefWidth="474.0" text="Calificaciones ">
          <content>
@@ -23,5 +23,7 @@
               </columns>
             </TableView>
          </content></TitledPane>
+      <Label fx:id="matricula" layoutX="664.0" layoutY="24.0" text="Label" />
+      <Button layoutX="43.0" layoutY="397.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" text="Inscribir alumno" onAction="#InscribirAlumno"/>
    </children>
 </Pane>
