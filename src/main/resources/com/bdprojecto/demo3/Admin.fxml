@@ -6,15 +6,14 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.adminStuff.AdminController">
    <children>
-      <Button alignment="CENTER" contentDisplay="CENTER" layoutX="14.0" layoutY="188.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="158.0" text="Dar de alta a un maestro" onAction="#altaMaestro"/>
-      <Button layoutX="236.0" layoutY="188.0" mnemonicParsing="false" text="Dar de alta a un alumno" onAction="#altaAlumno"/>
+      <Button layoutX="208.0" layoutY="188.0" mnemonicParsing="false" onAction="#darAlta" text="Dar de alta a un alumno/maestro" fx:id="darAlta"/>
       <Label fx:id="welcome" alignment="CENTER" layoutX="7.0" prefHeight="75.0" prefWidth="600.0" text="Bienvenido" textAlignment="CENTER">
          <font>
             <Font name="Consolas" size="22.0" />
          </font>
       </Label>
-      <Button layoutX="456.0" layoutY="188.0" mnemonicParsing="false" text="Dar de alta a un admin" onAction="#altaAdmin"/>
-      <Button layoutX="211.0" layoutY="256.0" mnemonicParsing="false" text="Consultar los usuarios registrados" onAction="#consulta"/>
-      <Button layoutX="236.0" layoutY="293.0" mnemonicParsing="false" text="Dar de baja a un usuario" onAction="#baja"/>
+      <Button layoutX="456.0" layoutY="188.0" mnemonicParsing="false" onAction="#altaAdmin" text="Dar de alta a un admin" />
+      <Button layoutX="206.0" layoutY="264.0" mnemonicParsing="false" onAction="#consulta" text="Consultar los usuarios registrados" />
+      <Button layoutX="14.0" layoutY="188.0" mnemonicParsing="false" onAction="#baja" text="Dar de baja a un usuario" />
    </children>
 </AnchorPane>

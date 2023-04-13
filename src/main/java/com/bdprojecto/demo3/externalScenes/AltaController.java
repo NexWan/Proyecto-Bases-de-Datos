@@ -1,6 +1,7 @@
 package com.bdprojecto.demo3.externalScenes;
 
 import com.bdprojecto.demo3.teacherStuff.Profesor;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
@@ -43,50 +44,60 @@ public class AltaController implements Initializable {
     }
 
     public void darAlta(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-        Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","escuela","escuela");
-        Statement st = conn.createStatement();
-        if(tabAlumno.getSelectionModel().getSelectedItem() != null){
-            Alumno selected = tabAlumno.getSelectionModel().getSelectedItem();
-            System.out.println(tabAlumno.getSelectionModel().getSelectedItem());
+        Platform.runLater(()->{
             try{
-                int option = JOptionPane.showConfirmDialog(null,String.format("El siguiente usuario se dara de alta: %s con matricula: %s y rol de Alumno",selected.getNomAlumno(),selected.getMatricula()));
-                if(option == JOptionPane.OK_OPTION){
-                    String user = selected.getNomAlumno().substring(0,3) + selected.getMatricula();
-                    String clave = selected.getNomAlumno().substring(0,0) + selected.getMatricula();
-                    String id = selected.getMatricula();
-                    String rol = "Alumno";
-                    insertTable(st, user, clave, id, rol);
+                Class.forName("oracle.jdbc.driver.OracleDriver");
+                Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","escuela","escuela");
+                Statement st = conn.createStatement();
+                if(tabAlumno.getSelectionModel().getSelectedItem() != null){
+                    Alumno selected = tabAlumno.getSelectionModel().getSelectedItem();
+                    System.out.println(tabAlumno.getSelectionModel().getSelectedItem());
+                    try{
+                        int option = JOptionPane.showConfirmDialog(null,String.format("El siguiente usuario se dara de alta: %s con matricula: %s y rol de Alumno",selected.getNomAlumno(),selected.getMatricula()));
+                        if(option == JOptionPane.OK_OPTION){
+                            String user = selected.getNomAlumno().substring(0,3) + selected.getMatricula();
+                            String clave = selected.getNomAlumno().substring(0,0) + selected.getMatricula();
+                            String id = selected.getMatricula();
+                            String rol = "Alumno";
+                            insertTable(st, user, clave, id, rol);
+                        }
+                    }catch (Exception e){
+                        JOptionPane.showMessageDialog(null,"Una excepcion ha ocurrido!","Error",JOptionPane.ERROR_MESSAGE);
+                    }
+                }else if(tabProf.getSelectionModel().getSelectedItem() != null) {
+                    Profesor selected = tabProf.getSelectionModel().getSelectedItem();
+                    try{
+                        int option = JOptionPane.showConfirmDialog(null,String.format("El siguiente usuario se dara de alta: %s con matricula: %s y rol de Alumno",selected.getNombre(),selected.getMatricula()));
+                        if(option == JOptionPane.OK_OPTION){
+                            String user = selected.getNombre().substring(0,3) + selected.getMatricula();
+                            String clave = selected.getNombre().substring(0,0) + selected.getMatricula();
+                            String id = selected.getMatricula();
+                            String rol = "Profesor";
+                            insertTable(st, user, clave, id, rol);
+                        }
+                    }catch (Exception e){
+                        JOptionPane.showMessageDialog(null,"Una excepcion ha ocurrido!","Error",JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }catch (Exception e){
-                JOptionPane.showMessageDialog(null,"Una excepcion ha ocurrido!","Error",JOptionPane.ERROR_MESSAGE);
+                System.out.println(e);
             }
-        }else if(tabProf.getSelectionModel().getSelectedItem() != null) {
-            Profesor selected = tabProf.getSelectionModel().getSelectedItem();
-            try{
-                int option = JOptionPane.showConfirmDialog(null,String.format("El siguiente usuario se dara de alta: %s con matricula: %s y rol de Alumno",selected.getNombre(),selected.getMatricula()));
-                if(option == JOptionPane.OK_OPTION){
-                    String user = selected.getNombre().substring(0,3) + selected.getMatricula();
-                    String clave = selected.getNombre().substring(0,0) + selected.getMatricula();
-                    String id = selected.getMatricula();
-                    String rol = "Profesor";
-                    insertTable(st, user, clave, id, rol);
-                }
-            }catch (Exception e){
-                JOptionPane.showMessageDialog(null,"Una excepcion ha ocurrido!","Error",JOptionPane.ERROR_MESSAGE);
-            }
-        }
+        });
     }
 
     private void insertTable(Statement st, String user, String clave, String id, String rol) throws SQLException, ClassNotFoundException {
         String query = String.format("INSERT INTO usuarios.users VALUES(%s,'%s','%s','%s')",id,user,clave,rol);
         ResultSet rt = st.executeQuery(query);
         if(rt.next()){
-            JOptionPane.showMessageDialog(null,String.format("El usuario: %s con clave: %s y matricula: %s ha sido insertado!",user,id,clave));
+            Platform.runLater(()->{
+                JOptionPane.showMessageDialog(null,String.format("El usuario: %s con clave: %s y matricula: %s ha sido insertado!",user,id,clave));
+            });
             st.execute("commit");
             updateDb();
         }else{
-            JOptionPane.showMessageDialog(null,"Ha ocurrido un error!","ERROR!",JOptionPane.ERROR_MESSAGE);
+            Platform.runLater(()->{
+                JOptionPane.showMessageDialog(null,"Ha ocurrido un error!","ERROR!",JOptionPane.ERROR_MESSAGE);
+            });
         }
     }
 
@@ -127,9 +138,5 @@ public class AltaController implements Initializable {
             Alumno a = new Alumno(rs.getString("NOMBRE"),rs.getString("MATRICULAAL"));
             tabAlumno.getItems().add(a);
         }
-    }
-
-    private void insertIntoTable(){
-
     }
 }
