@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<Pane prefHeight="400.0" prefWidth="781.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.externalScenes.ConsultasController">
+   <children>
+      <ScrollPane layoutX="43.0" layoutY="56.0" prefHeight="343.0" prefWidth="696.0">
+         <content>
+            <TableView prefHeight="315.0" prefWidth="694.0" fx:id="tabla">
+              <columns>
+                <TableColumn prefWidth="136.0" text="Nombre" fx:id="nombre"/>
+                <TableColumn prefWidth="137.0" text="Apellido" fx:id="apellido"/>
+                  <TableColumn prefWidth="102.0" text="Rol" fx:id="rol"/>
+                  <TableColumn prefWidth="142.0" text="Correo" fx:id="correo"/>
+                  <TableColumn prefWidth="176.0" text="Matricula/id" fx:id="matricula"/>
+              </columns>
+            </TableView>
+         </content>
+      </ScrollPane>
+      <Label alignment="CENTER" layoutX="3.0" layoutY="14.0" prefHeight="17.0" prefWidth="775.0" text="VISTA DE LOS DATOS">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

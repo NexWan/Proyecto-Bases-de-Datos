@@ -37,6 +37,7 @@ public class AdminController implements Initializable {
     }
 
     public void consulta(ActionEvent actionEvent) {
+
     }
 
     public void baja(ActionEvent actionEvent) {
