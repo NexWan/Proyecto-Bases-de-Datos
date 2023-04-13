@@ -23,6 +23,7 @@ CREATE TABLE Profesores (
                             apellidoM VARCHAR(20),
                             apellidoP VARCHAR(20),
                             correo VARCHAR(30),
+                            asignatura VARCHAR(20),
                             PRIMARY KEY(MatriculaP)
 );
 
@@ -35,34 +36,40 @@ CREATE TABLE Alumnos (
                          PRIMARY KEY(MatriculaAl)
 );
 
+CREATE TABLE Materias (
+                          idMateria INTEGER NOT NULL,
+                          nombre VARCHAR(20),
+                          descripcion VARCHAR(30),
+                          MatriculaP NUMERIC(5) NOT NULL,
+                          FOREIGN KEY(MatriculaP) REFERENCES Profesores(MatriculaP),
+                          PRIMARY KEY(idMateria)
+);
+
+CREATE TABLE Calificaciones ( --Esta tabla es alunos_has_materias
+                                  MatriculaAl NUMERIC(5) NOT NULL,
+                                  idMateria INTEGER NOT NULL,
+                                  calificacion INTEGER,
+                                  PRIMARY KEY(MatriculaAl, idMateria),
+                                  FOREIGN KEY(MatriculaAl) REFERENCES Alumnos(MatriculaAl),
+                                  FOREIGN KEY(idMateria) REFERENCES Materias(idMateria)
+);
+
 CREATE TABLE Aulas (
                        numAula NUMERIC(2) NOT NULL,
                        capacidad NUMERIC(2),
                        PRIMARY KEY(numAula)
 );
 
-CREATE TABLE Materias (
-                          idMateria INTEGER NOT NULL,
-                          MatriculaAl NUMERIC(5) NOT NULL,
-                          MatriculaP NUMERIC(5) NOT NULL,
-                          nombre VARCHAR(20),
-                          descripcion VARCHAR(30),
-                          numAula NUMERIC(2) NOT NULL,
-                          PRIMARY KEY(idMateria, MatriculaAl, MatriculaP),
-                          FOREIGN KEY(MatriculaAl) REFERENCES Alumnos(MatriculaAl),
-                          FOREIGN KEY(MatriculaP) REFERENCES Profesores(MatriculaP),
-                          FOREIGN KEY(numAula) REFERENCES Aulas(numAula)
+CREATE TABLE Clases ( --Esta tabla sirve para guardar informacion generar de las clases
+                        MatriculaP NUMERIC(5) NOT NULL,
+                        numAula NUMERIC(2) NOT NULL,
+                        idMateria INTEGER NOT NULL,
+                        PRIMARY KEY(MatriculaP, numAula, idMateria),
+                        FOREIGN KEY(MatriculaP) REFERENCES Profesores(MatriculaP),
+                        FOREIGN KEY(numAula) REFERENCES Aulas(numAula),
+                        FOREIGN KEY(idMateria) REFERENCES Materias(idMateria)
 );
 
-CREATE TABLE Calificaciones (
-                                idCalificacion INTEGER NOT NULL,
-                                idMateria INTEGER NOT NULL,
-                                MatriculaAl NUMERIC(5) NOT NULL,
-                                MatriculaP NUMERIC(5) NOT NULL,
-                                calificacion INTEGER,
-                                PRIMARY KEY(idCalificacion),
-                                FOREIGN KEY(idMateria, MatriculaAl, MatriculaP) REFERENCES Materias(idMateria, MatriculaAl, MatriculaP)
-);
 ```
 
 ![image](school.png)
@@ -112,4 +119,8 @@ Algunos datos como los de aula, calificaciones y materia las estoy agregando ind
 -- Desde el usuario sys o sysdba
 GRANT select ON usuarios.users TO escuela;
 ```
+
+
+
+
 
