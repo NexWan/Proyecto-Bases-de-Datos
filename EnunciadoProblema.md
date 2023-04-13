@@ -72,7 +72,7 @@ CREATE TABLE Clases ( --Esta tabla sirve para guardar informacion generar de las
 
 ```
 
-![image](school.png)
+![image](school5.png)
 
 # SCRIPT SQL PARA MANEJAR LOS DATOS DE LOGIN/SIGN UP
 ### Cabe recalcar que en esta bd se van a hacer querys desde esta bd/usuario hacia la de escuela, habran 3 roles *admin*, *profesor* y *alumno*.
