@@ -5,6 +5,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.sql.*;
@@ -17,6 +18,8 @@ public class ConsultasController implements Initializable {
     public TableColumn<Person, String> rol;
     public TableColumn<Person, String> matricula;
     public TableView<Person> tabla;
+
+    private Stage stage;
 
 
     @Override
@@ -64,6 +67,10 @@ public class ConsultasController implements Initializable {
             throw new RuntimeException(e);
         }
 
+    }
+
+    public void setStage(Stage stage){
+        this.stage = stage;
     }
 
     public Connection connDb(String user, String pass) throws SQLException, ClassNotFoundException {
