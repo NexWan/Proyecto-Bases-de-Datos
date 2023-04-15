@@ -4,26 +4,26 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-
 <Pane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.14-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.bdprojecto.demo3.alumnoStuff.AlumnoController">
    <children>
-      <TitledPane layoutX="263.0" layoutY="80.0" prefHeight="318.0" prefWidth="336.0" text="Calificaciones" fx:id="panelCal" visible="false">
+      <TitledPane fx:id="panelCal" layoutX="263.0" layoutY="80.0" prefHeight="318.0" prefWidth="336.0" text="Calificaciones" >
          <content>
-            <TableView prefHeight="200.0" prefWidth="200.0" fx:id="tableCal">
+            <TableView fx:id="tableCal" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn prefWidth="129.0" text="Materia" fx:id="materia"/>
-                <TableColumn prefWidth="116.0" text="Calificacion" fx:id="calificacion"/>
-                  <TableColumn prefWidth="89.0" text="Profesor" fx:id="profesor"/>
+                <TableColumn fx:id="materia" prefWidth="129.0" text="Materia" />
+                <TableColumn fx:id="calificacion" prefWidth="116.0" text="Calificacion" />
+                  <TableColumn fx:id="profesor" prefWidth="89.0" text="Profesor" />
               </columns>
             </TableView>
          </content>
       </TitledPane>
-      <Button layoutX="20.0" layoutY="146.0" mnemonicParsing="false" text="Inscribirse a materias" onAction="#InscribirMat"/>
-      <Button layoutX="30.0" layoutY="188.0" mnemonicParsing="false" text="Ver calificaciones" onAction="#VerCal"/>
+      <Button layoutX="20.0" layoutY="146.0" mnemonicParsing="false" onAction="#InscribirMat" text="Inscribirse a materias" />
+      <Button layoutX="30.0" layoutY="188.0" mnemonicParsing="false" onAction="#VerCal" text="Ver calificaciones" />
       <Label layoutX="30.0" layoutY="26.0" text="Bienvenido!">
          <font>
             <Font size="26.0" />
          </font>
       </Label>
+      <Label fx:id="matricula" layoutX="16.0" layoutY="358.0" text="Label" />
    </children>
 </Pane>

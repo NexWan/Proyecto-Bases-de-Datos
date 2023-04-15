@@ -3,13 +3,20 @@ package com.bdprojecto.demo3.alumnoStuff;
 public class Alumno {
     private String nomAlumno;
     private double calificacion;
-    private String Materia;
+    private String materia;
     private String matricula;
+    private String profesor;
 
     public Alumno(String nomAlumno, double calificacion, String materia) {
         this.nomAlumno = nomAlumno;
         this.calificacion = calificacion;
-        Materia = materia;
+        this.materia = materia;
+    }
+
+    public Alumno(String profesor, String materia, Double calificacion){
+        this.profesor = profesor;
+        this.calificacion = calificacion;
+        this.materia = materia;
     }
 
     public Alumno(String nomAlumno, String matricula){
@@ -34,11 +41,11 @@ public class Alumno {
     }
 
     public String getMateria() {
-        return Materia;
+        return materia;
     }
 
     public void setMateria(String materia) {
-        Materia = materia;
+        materia = materia;
     }
 
     public String getMatricula() {
@@ -47,6 +54,14 @@ public class Alumno {
 
     public void setMatricula(String matricula) {
         this.matricula = matricula;
+    }
+
+    public String getProfesor() {
+        return profesor;
+    }
+
+    public void setProfesor(String profesor) {
+        this.profesor = profesor;
     }
 }
 

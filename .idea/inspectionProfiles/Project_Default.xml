@@ -2,7 +2,7 @@
   <profile version="1.0">
     <option name="myName" value="Project Default" />
     <inspection_tool class="AutoCloseableResource" enabled="true" level="WARNING" enabled_by_default="true">
-      <option name="METHOD_MATCHER_CONFIG" value="java.util.Formatter,format,java.io.Writer,append,com.google.common.base.Preconditions,checkNotNull,org.hibernate.Session,close,java.io.PrintWriter,printf,java.io.PrintStream,printf,com.bdprojecto.demo3.adminStuff.AdminController.adminAlta,connectDB,com.bdprojecto.demo3.externalScenes.ConsultasController,connDb,com.bdprojecto.demo3.adminStuff.AdminController.darBaja,connectDb,com.bdprojecto.demo3.alumnoStuff.AlumnoController.verCalificaciones,connDB,com.bdprojecto.demo3.alumnoStuff.AlumnoController.verMaterias,connDB" />
+      <option name="METHOD_MATCHER_CONFIG" value="java.util.Formatter,format,java.io.Writer,append,com.google.common.base.Preconditions,checkNotNull,org.hibernate.Session,close,java.io.PrintWriter,printf,java.io.PrintStream,printf,com.bdprojecto.demo3.adminStuff.AdminController.adminAlta,connectDB,com.bdprojecto.demo3.externalScenes.ConsultasController,connDb,com.bdprojecto.demo3.adminStuff.AdminController.darBaja,connectDb,com.bdprojecto.demo3.alumnoStuff.AlumnoController.verCalificaciones,connDB,com.bdprojecto.demo3.alumnoStuff.AlumnoController.verMaterias,connDB,com.bdprojecto.demo3.alumnoStuff.AlumnoController.consultarCal,connDB" />
     </inspection_tool>
     <inspection_tool class="SqlDialectInspection" enabled="false" level="WARNING" enabled_by_default="false" />
     <inspection_tool class="SqlNoDataSourceInspection" enabled="false" level="WARNING" enabled_by_default="false" />
