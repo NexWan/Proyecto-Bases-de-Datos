@@ -7,10 +7,11 @@ public class Alumno {
     private String matricula;
     private String profesor;
 
-    public Alumno(String nomAlumno, double calificacion, String materia) {
+    public Alumno(String nomAlumno, double calificacion, String materia, String matricula) {
         this.nomAlumno = nomAlumno;
         this.calificacion = calificacion;
         this.materia = materia;
+        this.matricula = matricula;
     }
 
     public Alumno(String profesor, String materia, Double calificacion){

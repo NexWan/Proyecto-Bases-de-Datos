@@ -17,13 +17,13 @@
          <content>
             <TableView fx:id="tab" prefHeight="200.0" prefWidth="200.0">
               <columns>
-                <TableColumn fx:id="Materia" prefWidth="181.0" text="Materia" />
-                <TableColumn fx:id="calificacion" prefWidth="119.0" text="Calificacion" />
-                  <TableColumn fx:id="nomAlumno" prefWidth="171.0" text="Nombre alumno" />
+                <TableColumn fx:id="Materia" prefWidth="125.0" text="Materia" />
+                <TableColumn fx:id="calificacion" prefWidth="85.0" text="Calificacion" />
+                  <TableColumn fx:id="nomAlumno" minWidth="0.0" prefWidth="170.0" text="Nombre alumno" />
+                  <TableColumn prefWidth="86.0" text="Matricula" fx:id="matriculaAl"/>
               </columns>
             </TableView>
          </content></TitledPane>
       <Label fx:id="matricula" layoutX="664.0" layoutY="24.0" text="Label" />
-      <Button layoutX="43.0" layoutY="397.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="110.0" text="Inscribir alumno" onAction="#InscribirAlumno"/>
    </children>
 </Pane>
