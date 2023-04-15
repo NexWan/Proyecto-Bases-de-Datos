@@ -4,18 +4,18 @@ import com.bdprojecto.demo3.teacherStuff.Profesor;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.TitledPane;
+import javafx.scene.control.*;
 
+import java.awt.*;
 import java.net.URL;
 import java.sql.*;
 import java.util.LinkedList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import com.bdprojecto.demo3.alumnoStuff.Alumno;
 import com.bdprojecto.demo3.teacherStuff.Profesor;
+import javafx.scene.control.Label;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import javax.swing.*;
@@ -86,19 +86,42 @@ public class AltaController implements Initializable {
     }
 
     private void insertTable(Statement st, String user, String clave, String id, String rol) throws SQLException, ClassNotFoundException {
-        String query = String.format("INSERT INTO usuarios.users VALUES(%s,'%s','%s','%s')",id,user,clave,rol);
-        ResultSet rt = st.executeQuery(query);
-        if(rt.next()){
-            Platform.runLater(()->{
+        try{
+            String query = String.format("INSERT INTO usuarios.users VALUES(%s,'%s','%s','%s')",id,user,clave,rol);
+            ResultSet rt = st.executeQuery(query);
+            if(rt.next()){
                 JOptionPane.showMessageDialog(null,String.format("El usuario: %s con clave: %s y matricula: %s ha sido insertado!",user,id,clave));
-            });
-            st.execute("commit");
-            updateDb();
-        }else{
-            Platform.runLater(()->{
-                JOptionPane.showMessageDialog(null,"Ha ocurrido un error!","ERROR!",JOptionPane.ERROR_MESSAGE);
-            });
+                if(rol.equalsIgnoreCase("profesor") || rol.equalsIgnoreCase("profe")){
+                    InputFX inputFX = new InputFX(2, List.of("Seleccione que materia va a dar","descripcion de la materia"));
+                    inputFX.showInputDialog();
+                    List<String> list = inputFX.getInputValues();
+                    query = "SELECT idMateria FROM materias";
+                    System.out.println(query);
+                    rt = st.executeQuery(query);
+                    int i = 0;
+                    while(rt.next()){
+                        i = rt.getInt("IDMATERIA");
+                    }
+                    System.out.println(i);
+                    query = String.format("INSERT INTO materias VALUES(%d,'%s','%s',%s)",(i+1),list.get(0),list.get(1),id);
+                    rt = st.executeQuery(query);
+                    if(rt.next()){
+                        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
+                        a.setContentText("Se ha registrado la materia con exito!");
+                        a.show();
+                    }
+                }
+                st.execute("commit");
+                updateDb();
+            }else{
+                Platform.runLater(()->{
+                    JOptionPane.showMessageDialog(null,"Ha ocurrido un error!","ERROR!",JOptionPane.ERROR_MESSAGE);
+                });
+            }
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
+
     }
 
     public void updateDb() throws SQLException, ClassNotFoundException {

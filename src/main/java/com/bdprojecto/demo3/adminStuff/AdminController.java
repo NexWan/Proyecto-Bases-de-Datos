@@ -53,6 +53,39 @@ public class AdminController implements Initializable {
         }
     }
 
+    public void registrar(ActionEvent actionEvent) {
+        try{
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection conn =  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","escuela","escuela");
+            Statement st = conn.createStatement();
+            InputFX inputFX = new InputFX(6,List.of("Matricula","Nombre","Apellido Paterno","Apellido Materno","Correo","Rol del usuario (profesor/alumno)"));
+            inputFX.showInputDialog();
+            List<String> list = inputFX.getInputValues();
+            ResultSet rs = null;
+            if(list.get(5).equalsIgnoreCase("Profesor")){
+                String query = String.format("INSERT INTO profesores VALUES(%s,'%s','%s','%s','%s')",list.get(0),list.get(1),list.get(2),list.get(3),list.get(4));
+                rs = st.executeQuery(query);
+            }else if(list.get(5).equalsIgnoreCase("alumno")){
+                String query = String.format("INSERT INTO Alumnos VALUES(%s,'%s','%s','%s','%s')",list.get(0),list.get(1),list.get(2),list.get(3),list.get(4));
+                rs = st.executeQuery(query);
+            }else{
+                Platform.runLater(()->{
+                    JOptionPane.showMessageDialog(null,"ERROR! verifica que el rol sea alumno o profesor.","ERROR!",JOptionPane.ERROR_MESSAGE);
+                });
+                return;
+            }
+            if (rs.next()) {
+                Platform.runLater(()->{
+                    JOptionPane.showMessageDialog(null,"El usuario se ha insertado con exito!","Confirmacion",JOptionPane.INFORMATION_MESSAGE);
+                });
+            }else{
+                JOptionPane.showMessageDialog(null,"Ha ocurrido un error!");
+            }
+        } catch (SQLException | ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     static class adminAlta{
         adminAlta() throws SQLException, ClassNotFoundException {
             Connection conn = connectDB();
