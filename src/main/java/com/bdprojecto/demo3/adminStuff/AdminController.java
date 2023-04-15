@@ -20,31 +20,37 @@ import javafx.stage.Stage;
 
 import javax.swing.*;
 
+/*
+* The class AdminController is the class in charge of handling all events in the app.
+*/
+
 public class AdminController implements Initializable {
+    /*Declaration of objects */
     public Label welcome;
     public static Label static_welcome;
     public Stage s = new Stage();
     public Button darAlta;
-
+/*Metodo inicializable, funciona para poder dar un valor a un objeto a la hora de iniciar el programa/clase*/
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         static_welcome = welcome;
     }
-
+    /*La funcion darAlta funciona para poder dar de alta a los usuarios*/
     public void darAlta(ActionEvent actionEvent) throws Exception {
         new AltaUI().start(s);
         ((Stage) darAlta.getScene().getWindow()).close();
     }
 
-
+    /*Es lo mismo que la clase darAlta, solamente que este es un simple Javafx en vez de toda una clase
+    * Ya que solamente servira para registrar usuarios con rol de administrador y estos como tal no tienen muchos atributos*/
     public void altaAdmin(ActionEvent actionEvent) throws SQLException, ClassNotFoundException {
         new adminAlta();
     }
-
+    /*Metodo que llama a la clase consultas para poder ver todos los datos que estan registrados*/
     public void consulta(ActionEvent actionEvent) throws IOException {
         new ConsultasUI().start(s);
     }
-
+//    Metodo que llama a la clase statica darBaja para poder dar de baja a algun usuario
     public void baja(ActionEvent actionEvent) {
         try{
             new darBaja();
@@ -52,12 +58,15 @@ public class AdminController implements Initializable {
 
         }
     }
-
+    /*Metodo de registrar, en este metodo se encuentran conexiones y querys que ayudan a insertar usuarios en la base de datos
+    * Este sirve para dar de alta en el sistema de escuela los profesores/alumnos*/
     public void registrar(ActionEvent actionEvent) {
         try{
+//            Conexion a la base de datos de escuela/escuela
             Class.forName("oracle.jdbc.driver.OracleDriver");
             Connection conn =  DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","escuela","escuela");
             Statement st = conn.createStatement();
+//            Uso de mi clase personalizada InputFX para poder registrar datos
             InputFX inputFX = new InputFX(6,List.of("Matricula","Nombre","Apellido Paterno","Apellido Materno","Correo","Rol del usuario (profesor/alumno)"));
             inputFX.showInputDialog();
             List<String> list = inputFX.getInputValues();
