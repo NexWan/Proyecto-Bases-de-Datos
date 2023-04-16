@@ -11,4 +11,12 @@ Esta aplicacion es creada con:
 <li>JDBCL</li>
 </ul>
 
-Agregare mas informacion conforme actualizo este programa.
+Para poder ver toda la informacion principal de este proyecto ver los **readme.md** que se encuentran en cada carpeta.
+<br> La informacion respecto al enunciado de sql se encuentra aqui: [Enunciado](EnunciadoProblema.md)
+<br>
+Los demas archivos los encontraras aqui:
+- [Admin](src/main/java/com/bdprojecto/demo3/adminStuff)
+- [Alumno](src/main/java/com/bdprojecto/demo3/alumnoStuff)
+- [External](src/main/java/com/bdprojecto/demo3/externalScenes)
+- [Login](src/main/java/com/bdprojecto/demo3/loginStuff)
+- [Profesor](src/main/java/com/bdprojecto/demo3/teacherStuff)
