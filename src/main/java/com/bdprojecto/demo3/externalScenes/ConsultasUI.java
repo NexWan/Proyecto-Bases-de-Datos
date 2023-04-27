@@ -15,7 +15,7 @@ public class ConsultasUI extends Application {
 
     @Override
     public void start(Stage primaryStage) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/bdprojecto/demo3/Consultas.FXML"));
+        FXMLLoader loader = new FXMLLoader(ConsultasUI.class.getResource("/com/bdprojecto/demo3/Consultas.FXML"));
         Scene scene = new Scene(loader.load());
         primaryStage.setTitle("Consulta");
         primaryStage.setScene(scene);

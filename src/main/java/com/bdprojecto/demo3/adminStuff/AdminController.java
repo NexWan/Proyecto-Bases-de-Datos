@@ -96,17 +96,22 @@ public class AdminController implements Initializable {
     }
 
     static class adminAlta{
+        /*Esta clase lo que hace es dar de alta a un administrador, se usa la clase custom de InputFX para poder pedir la informacion necesaria.
+        * Una vez hecho esto se ejecuta un Query para poder insertar en la tabla Users el usuario con rol ADMIN */
         adminAlta() throws SQLException, ClassNotFoundException {
             Connection conn = connectDB();
             Statement st = getStatement(conn);
+//            Estos son los datos que se pide, id del administrador, nombre de usuario, clave de acceso
             InputFX inputFX = new InputFX(3, List.of("ID aministrador","Nombre de usuario","Clave de acceso"));
             inputFX.showInputDialog();
             var list = inputFX.getInputValues();
             if(!list.get(0).isBlank() && !list.get(1).isBlank() && !list.get(2).isBlank()){
                 try{
+//                    Query para poder insertar en la tabla users los datos, se utiliza String.format para poder darle formato al string, list.get hace referencia a los valores que se piden
                     ResultSet rs = st.executeQuery(String.format("INSERT INTO users VALUES(%d,'%s','%s','ADMIN')",Integer.parseInt(list.get(0)),list.get(1),list.get(2)));
                     if(rs.next()) {
                         Platform.runLater(() ->{
+//                            Si el Query se realiza con exito saldra un mensaje de que el usuario se inserto con exito
                             JOptionPane.showMessageDialog(null, "Usuario insertado con exito!");
                         });
                     }
@@ -118,6 +123,8 @@ public class AdminController implements Initializable {
                 }
             }
         }
+
+        /*El metodo connectDB regresa como valor la connecion a la base de datos mediante el Driver de JDBC*/
 
         Connection connectDB() throws SQLException, ClassNotFoundException {
             Class.forName("oracle.jdbc.driver.OracleDriver");

@@ -27,6 +27,7 @@ public class AlumnoController implements Initializable {
     public TableColumn<Alumno,String> profesor;
     public Label matricula;
     public static Label static_matriculaAl;
+    private int i = 1;
 
 
     public void InscribirMat(ActionEvent actionEvent) {
@@ -34,10 +35,13 @@ public class AlumnoController implements Initializable {
     }
 
     public void VerCal(ActionEvent actionEvent) {
-        panelCal.setVisible(true);
         new consultarCal(matricula.getText());
+        if(i%2 == 0)
+            tableCal.getItems().clear();
+        panelCal.setVisible(true);
     }
 
+//    Metodo inicializable, aqui se declara los objetos para el tableview y se le asigna un objeto.
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         static_matriculaAl = matricula;
@@ -50,17 +54,22 @@ public class AlumnoController implements Initializable {
         private JLabel label = new JLabel();
         private String matriculaAl;
 
+        /*Metodo verMaterias, se hace en este metodo la coneccion a la base de datos y tambien se muestra todas las calificaciones con el table view*/
+
         public verMaterias(String matriculaAl){
             try{
                 Connection conn = connDB();
                 Statement st = conn.createStatement();
+//                Conexion a la base de datos
                 DefaultTableModel model = new DefaultTableModel();
+//                Query para poder seleccionar todas las materias donde la matricula del profesor sea coincida con la de las materias y calificaciones.
                 ResultSet rs = st.executeQuery("SELECT m.nombre AS materia, m.descripcion, p.nombre AS profesor FROM materias M, profesores P WHERE m.matriculaP = p.matriculaP");
                 model.addColumn("materia");
                 model.addColumn("Descripcion");
                 model.addColumn("Profesor");
                 LinkedList<String> list = new LinkedList<>();
                 while(rs.next()){
+//                    Se le agrega a la tabla las caracteristicas
                     Object[] row = new Object[3];
                     row[0] = rs.getString("MATERIA");
                     row[1] = rs.getString("DESCRIPCION");
@@ -77,9 +86,11 @@ public class AlumnoController implements Initializable {
                 JOptionPane.showMessageDialog(null,"Se mostrara a continuacion algunas materias, digita el nombre de la que te quieres inscribir");
                 String materia = JOptionPane.showInputDialog(null,jScrollPane);
                 if(list.contains(materia)){
+//                    Query para poder seleccionar el id de la materia que se quiere inscribi
                     rs = st.executeQuery(String.format("SELECT idMateria FROM Materias WHERE nombre='%s'",materia));
                     rs.next();
                     String idMater = rs.getString("IDMATERIA");
+//                    Query para poder insertar el alumno y darlo de alta en esa materia. tambien se hace la relacion con el profesor
                     rs = st.executeQuery(String.format("INSERT INTO Calificaciones VALUES(%s,%s,0)",matriculaAl,idMater));
                     if(rs.next()){
                         Platform.runLater(() ->{
@@ -109,10 +120,12 @@ public class AlumnoController implements Initializable {
             try{
                 Connection conn = connDB();
                 Statement st = conn.createStatement();
+//                Query que selecciona los datos del profesor, materia y calificacion para poder mostrarla en una tabla.
                 String query = String.format("SELECT C.calificacion AS calificacion, M.nombre AS materia, P.nombre AS profesor FROM Calificaciones C, Materias M, Profesores P WHERE" +
                         " C.matriculaAl=%s AND C.idMateria = M.idMateria AND M.matriculaP = P.matriculaP",matricula);
                 ResultSet rt = st.executeQuery(query);
                 while(rt.next()){
+//                    Se agregan todos los valores que el Query de en una tabla de tipo TableView
                     Alumno al = new Alumno(rt.getString("PROFESOR"),rt.getString("MATERIA"),Double.parseDouble(rt.getString("CALIFICACION")));
                     tableCal.getItems().add(al);
                 }

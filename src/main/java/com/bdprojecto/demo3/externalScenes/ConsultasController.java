@@ -39,6 +39,8 @@ public class ConsultasController implements Initializable {
                 tabla.getItems().add(person);
             }
             conn = connDb("escuela","escuela");
+            //          Se hace un Query donde se seleccionen todos los profesores en la tabla de escuela, para poder mostrarlos en una tabla
+
             String queryP = """
                     SELECT p.nombre AS nombre, p.apellidoP || ' ' || p.apellidoM AS apellido, p.matriculaP, p.correo, u.rol
                     FROM escuela.profesores p
@@ -51,6 +53,7 @@ public class ConsultasController implements Initializable {
                 Person person = new Person(rt.getString("NOMBRE"),rt.getString("APELLIDO"),rt.getString("CORREO"),rt.getString("ROL"),rt.getString("MATRICULAP"));
                 tabla.getItems().add(person);
             }
+//          Se hace un Query donde se seleccionen todos los alumnos en la tabla de escuela, para poder mostrarlos en una tabla
             String queryAl= """
                     SELECT a.nombre AS nombre, a.apellidoP || ' ' || a.apellidoM AS apellido, a.matriculaAl, a.correo, u.rol
                     FROM escuela.alumnos a

@@ -87,6 +87,7 @@ public class AltaController implements Initializable {
 
     private void insertTable(Statement st, String user, String clave, String id, String rol) throws SQLException, ClassNotFoundException {
         try{
+//            Con esto se inserta en la tabla de usuarios los valores previamente pasados. Este caso es especifico para dar de alta alumnos y profesores
             String query = String.format("INSERT INTO usuarios.users VALUES(%s,'%s','%s','%s')",id,user,clave,rol);
             ResultSet rt = st.executeQuery(query);
             if(rt.next()){
@@ -103,6 +104,7 @@ public class AltaController implements Initializable {
                         i = rt.getInt("IDMATERIA");
                     }
                     System.out.println(i);
+//                    Si el rol es de profesor se pedira que inserte que materia va a dar, por consecuente se tiene que dar de alta esa materia con el id del profesor en la tabla de materias con este query
                     query = String.format("INSERT INTO materias VALUES(%d,'%s','%s',%s)",(i+1),list.get(0),list.get(1),id);
                     rt = st.executeQuery(query);
                     if(rt.next()){
@@ -134,6 +136,7 @@ public class AltaController implements Initializable {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection conn = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","escuela","escuela");
         Statement st = conn.createStatement();
+//        En los 2 querys se selecciona todos los usuarios dentro de la escuela que no esten registrados en la base de datos de los usuarios
         String queryP = """
                     SELECT nombre, matriculaP
                     FROM escuela.profesores

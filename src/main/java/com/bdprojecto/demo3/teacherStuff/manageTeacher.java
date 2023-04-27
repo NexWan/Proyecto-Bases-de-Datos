@@ -48,13 +48,17 @@ public class manageTeacher implements Initializable {
                 Class.forName("oracle.jdbc.driver.OracleDriver");
                 Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","escuela","escuela");
                 Statement st = con.createStatement();
-                String query = String.format("UPDATE calificaciones SET calificacion= %s " +
-                        "WHERE idMateria = (SELECT idMateria FROM materias WHERE matriculaP=%s) AND matriculaAl = %s",list.get(1),matricula.getText(),list.get(0));
-                ResultSet rs = st.executeQuery(query);
-                if(rs.next()){
-                    JOptionPane.showMessageDialog(null,"Calificacion actualizada!");
-                }else{
-                    JOptionPane.showMessageDialog(null,"No se pudo actualizar la calificacion! verifique los datos","ERROR!",JOptionPane.ERROR_MESSAGE);
+//                Con esta Query se moifica la calificacion del alumno que se indique en esta tabla
+                try{
+                    String query = String.format("UPDATE calificaciones SET calificacion= %s " +
+                            "WHERE idMateria = (SELECT idMateria FROM materias WHERE matriculaP=%s) AND matriculaAl = %s",list.get(1),matricula.getText(),list.get(0));
+                    ResultSet rs = st.executeQuery(query);
+                    if(rs.next())
+                        JOptionPane.showMessageDialog(null,"Calificacion actualizada!");
+                    else
+                        JOptionPane.showMessageDialog(null,"No se pudo actualizar la calificacion! verifique los datos","ERROR!",JOptionPane.ERROR_MESSAGE);
+                }catch(Exception e){
+                    JOptionPane.showMessageDialog(null,"Ocurrio un error! Consulte la matricula si es correcta","ERROR!",JOptionPane.ERROR_MESSAGE);
                 }
             } catch (SQLException | ClassNotFoundException e) {
                 throw new RuntimeException(e);
@@ -67,6 +71,7 @@ public class manageTeacher implements Initializable {
         Class.forName("oracle.jdbc.driver.OracleDriver");
         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe","escuela","escuela");
         Statement st = con.createStatement();
+//        Se selecciona el nombre de la materia, calificacion y nombre del alumno para poder mostrar su calificacion en una tabla.
         String query = """
             SELECT a.nombre AS nombreAl, m.nombre AS nombreMat, c.calificacion, p.nombre AS nombreProf, a.matriculaAl
             FROM Alumnos a, Materias m, Calificaciones c, Profesores p
